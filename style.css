@@ -1,0 +1,307 @@
+/* 基本样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 550px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+h2 {
+    color: #555;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-size: 1.4em;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 40px 0;
+}
+
+/* 表单和按钮通用样式 */
+.input-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 15px;
+}
+
+.input-group label {
+    display: block;
+    color: #555;
+    min-width: 70px;
+    text-align: right;
+    font-weight: 600;
+}
+
+.input-group input[type="number"] {
+    width: 120px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+.input-group input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin: 10px 5px 0 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* 导出/导入按钮特定样式 */
+.export-btn { /* 用于导出数字 */
+    background-color: #28a745;
+}
+.export-btn:hover {
+    background-color: #218838;
+}
+.import-btn { /* 用于导入选项 */
+    background-color: #17a2b8; /* 青色 */
+}
+.import-btn:hover {
+    background-color: #138496;
+}
+
+
+/* 结果显示区域 */
+.result { /* 单行结果，如转盘 */
+    margin-top: 25px;
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+}
+.result span {
+    /* color: #007bff; */ /* 颜色由 JS 控制 */
+    /* background-color: #e7f3ff; */ /* 背景由 JS 控制 */
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    min-width: 30px;
+    word-break: break-all;
+    margin-left: 5px;
+    min-height: 1.2em; /* 确保空结果也有高度 */
+    vertical-align: middle;
+    border: 1px solid #eee; /* 给结果区加个边框 */
+}
+
+.result-area { /* 多行结果，如数字列表 */
+    margin-top: 20px;
+    text-align: left;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    max-height: 160px;
+    overflow-y: auto;
+}
+.result-area p {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+#random-number-list {
+    list-style-type: decimal;
+    padding-left: 25px;
+    margin: 0;
+}
+#random-number-list li {
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+#random-number-list li:last-child {
+    border-bottom: none;
+}
+#random-number-list li:only-child:contains('-') {
+    list-style-type: none;
+    padding-left: 0;
+    color: #888;
+    font-style: italic;
+}
+
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 10px;
+    min-height: 1.2em;
+    font-weight: bold;
+}
+
+/* 转盘特定样式 */
+.wheel-controls {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.wheel-controls label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: -5px;
+}
+.wheel-controls textarea {
+    width: 90%;
+    max-width: 400px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+.wheel-controls textarea:focus {
+     border-color: #007bff;
+     outline: none;
+}
+/* 转盘控制按钮组 */
+.wheel-controls .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 5px;
+}
+.wheel-controls .button-group button {
+    margin: 0;
+    flex-grow: 1;
+    flex-basis: 120px;
+    max-width: 180px;
+}
+
+/* 导入格式提示 */
+#import-hint {
+    font-size: 0.85em;
+    font-style: italic;
+    color: #666;
+    margin-top: 5px; /* 调整与按钮组的间距 */
+    display: block; /* 确保独占一行 */
+}
+
+
+/* 转盘容器和 SVG 样式 */
+.wheel-container {
+    position: relative;
+    width: 250px; /* 默认容器宽度 */
+    height: 250px; /* 默认容器高度 */
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: #dc3545;
+    z-index: 10;
+    filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.3));
+}
+
+#wheel-svg {
+    display: block;
+    /* filter is set inline in HTML */
+}
+
+/* SVG 内部元素的基础样式 */
+.wheel-segment-path {
+    stroke: #fff; /* 扇区间的描边 */
+    stroke-width: 0.5; /* 描边宽度 (基于 viewBox) */
+}
+
+.wheel-segment-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-size set inline by JS */
+    fill: #333; /* 文本颜色 */
+    text-anchor: middle; /* 水平居中 */
+    dominant-baseline: middle; /* 尝试垂直居中 */
+    pointer-events: none; /* 文本不响应鼠标事件 */
+    /* 描边已移除 */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .container { padding: 20px 25px; margin: 10px 0; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.3em; }
+
+    .input-group { flex-direction: column; align-items: stretch; gap: 5px; }
+    .input-group label { text-align: left; min-width: auto; }
+    .input-group input[type="number"] { width: 100%; }
+
+    .wheel-controls textarea { width: 100%; }
+    .wheel-controls .button-group { flex-direction: column; align-items: center; gap: 10px; }
+    .wheel-controls .button-group button { width: 80%; max-width: none; }
+
+    #import-hint { margin-top: 10px; } /* 小屏幕上调整提示间距 */
+
+     .wheel-container { width: 220px; height: 220px; }
+     .pointer { font-size: 22px; top: -18px; }
+}

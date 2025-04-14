@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机数生成器-MADE in yh</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>随机数生成器-MADE in yh</h1>
+
+        <div class="section random-number-generator">
+            <h2>随机数生成器</h2>
+            <div class="input-group">
+                <label for="min-number">最小值:</label>
+                <input type="number" id="min-number" value="1">
+            </div>
+            <div class="input-group">
+                <label for="max-number">最大值:</label>
+                <input type="number" id="max-number" value="100">
+            </div>
+            <div class="input-group">
+                <label for="number-count">生成个数:</label>
+                <input type="number" id="number-count" value="1" min="1">
+            </div>
+            <button id="generate-number-btn">生成随机数</button>
+            <button id="export-numbers-btn" class="export-btn" disabled>导出数字 (Excel)</button>
+            <div class="result-area" id="random-number-results">
+                <p>结果:</p>
+                <ul id="random-number-list"><li>-</li></ul>
+            </div>
+            <p id="number-error" class="error-message"></p>
+        </div>
+
+        <hr>
+
+        <div class="section lucky-wheel">
+            <h2>幸运转盘 (可自定义)</h2>
+            <div class="wheel-controls">
+                <label for="wheel-options">输入选项 (每行一个):</label>
+                <textarea id="wheel-options" rows="6" placeholder="在此输入选项，或通过下方按钮导入文件...&#10;留空则显示3个颜色块"></textarea> <div class="button-group">
+                    <button id="update-wheel-btn">更新转盘</button>
+                    <input type="file" id="import-file-input" accept=".xlsx, .xls, .csv" style="display: none;">
+                    <button id="import-options-btn" class="import-btn">导入选项</button>
+                    </div>
+                 <small id="import-hint" style="display: block; margin-top: 5px; color: #666;">(支持 Excel/CSV, 读取第一列)</small>
+                <p id="wheel-error" class="error-message"></p>
+            </div>
+
+            <div class="wheel-container">
+                <div class="pointer">▼</div>
+                <svg id="wheel-svg" viewBox="0 0 200 200" width="250" height="250"
+                     style="display: block; margin: auto; max-width: 100%; transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1); filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));">
+                    <defs></defs> {/* 用于定义文本路径等 */}
+                    <g id="wheel-segments-group"></g> {/* 存放扇形路径 */}
+                    <g id="wheel-texts-group"></g> {/* 存放文本 */}
+                 </svg>
+            </div>
+            <button id="spin-wheel-btn" disabled>旋转转盘</button>
+            <p class="result">结果: <span id="wheel-result">-</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
